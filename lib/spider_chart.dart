@@ -52,14 +52,14 @@ class SpiderChartPainter extends CustomPainter {
   final List<String> labels;
   final decimalPrecision;
 
-  final Paint spokes = Paint()..color = Colors.grey;
+  final Paint spokes = Paint()..color = Colors.black45;
 
   final Paint fill = Paint()
-    ..color = Color.fromARGB(15, 50, 50, 50)
+    ..color = Color.fromARGB(80, 255, 0, 0)
     ..style = PaintingStyle.fill;
 
   final Paint stroke = Paint()
-    ..color = Color.fromARGB(255, 50, 50, 50)
+    ..color = Colors.redAccent
     ..style = PaintingStyle.stroke;
 
   SpiderChartPainter(this.data, this.maxNumber, this.colors, this.labels,
@@ -122,7 +122,7 @@ class SpiderChartPainter extends CustomPainter {
     for (var i = 0; i < points.length; i++) {
       String s = data[i].toStringAsFixed(decimalPrecision);
       textPainter.text =
-          TextSpan(text: s, style: TextStyle(color: Colors.black));
+          TextSpan(text: s, style: TextStyle(color: Colors.black87));
       textPainter.layout();
       if (points[i].dx < center.dx) {
         textPainter.paint(
@@ -157,7 +157,7 @@ class SpiderChartPainter extends CustomPainter {
       Canvas canvas, Offset center, List<Offset> points, List<String> labels) {
     var textPainter = TextPainter(textDirection: TextDirection.ltr);
     var textStyle =
-        TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold);
+        TextStyle(color: Colors.black, fontWeight: FontWeight.bold);
 
     for (var i = 0; i < points.length; i++) {
       textPainter.text = TextSpan(text: labels[i], style: textStyle);
